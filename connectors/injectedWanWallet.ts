@@ -29,8 +29,8 @@ export default class Connector extends LockConnector {
       } catch (e) {
         console.error(e);
       }
-    } else if (window['web3']) {
-      provider = window['web3'].currentProvider;
+    } else {
+      provider = await this.web3Modal.connect();
     }
     return provider;
   }
