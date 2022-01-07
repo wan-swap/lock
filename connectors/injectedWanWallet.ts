@@ -22,16 +22,7 @@ export default class Connector extends LockConnector {
   async connect() {
     let provider;
     if (window['injectWeb3']) {
-      console.log('1')
       provider = await this.web3Modal.connectTo('wanwallet');
-      try {
-        const web3 = new Web3(provider);
-        console.log('2')
-        await web3.eth.getAccounts();
-        console.log('3')
-      } catch (e) {
-        console.error(e);
-      }
     } else {
       provider = await this.web3Modal.connectTo('wanwallet');
     }
