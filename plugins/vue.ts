@@ -24,7 +24,9 @@ export const useLock = ({ ...options }) => {
       async login(connector) {
         // @ts-ignore
         const lockConnector = this.lockClient.getConnector(connector);
+        console.log(lockConnector, 'before')
         const provider = await lockConnector.connect();
+        console.log(connector, lockConnector, 'after')
         if (provider) {
           localStorage.setItem(`_${name}.connector`, connector);
           this.isAuthenticated = true;
