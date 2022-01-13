@@ -1,6 +1,7 @@
 // @ts-ignore
 import Vue from 'vue'; // v^2.6.11
 import Lock from '../src/lock';
+import Web3 from 'web3';
 
 const name = 'lock';
 
@@ -29,6 +30,9 @@ export const useLock = ({ ...options }) => {
           localStorage.setItem(`_${name}.connector`, connector);
           this.isAuthenticated = true;
           this.provider = provider;
+          if (connector === 'wanwallet') {
+            this.accounts = await new Web3(provider).eth.getAccounts();
+          }
         }
         return provider;
       },
