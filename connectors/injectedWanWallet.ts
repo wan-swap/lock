@@ -1,7 +1,6 @@
 import LockConnector from '../src/connector';
 import Web3Modal from '@wandevs/web3modal';
 import { WanWalletConnector } from '@web3-react-wan/wanwallet-connector';
-import Web3 from 'web3';
 
 export default class Connector extends LockConnector {
   web3Modal = new Web3Modal({
@@ -23,7 +22,6 @@ export default class Connector extends LockConnector {
     let provider;
     try {
       provider = await this.web3Modal.connectTo('wanwallet');
-      await new Web3(provider).eth.getAccounts();
     } catch(err) {
       console.error(err);
     }
