@@ -18,7 +18,8 @@ export const useLock = ({ ...options }) => {
         isAuthenticated: false,
         lockClient: null,
         provider: null,
-        web3: null
+        web3: null,
+        accounts: null
       };
     },
     methods: {
@@ -45,6 +46,7 @@ export const useLock = ({ ...options }) => {
           localStorage.removeItem(`_${name}.connector`);
           this.isAuthenticated = false;
           this.provider = null;
+          this.accounts = null;
         }
       },
       async getConnector() {
