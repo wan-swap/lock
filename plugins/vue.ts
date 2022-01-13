@@ -31,9 +31,7 @@ export const useLock = ({ ...options }) => {
           localStorage.setItem(`_${name}.connector`, connector);
           this.isAuthenticated = true;
           this.provider = provider;
-          if (connector === 'wanwallet') {
-            this.accounts = await new Web3(provider).eth.getAccounts();
-          }
+          this.accounts = await new Web3(provider).eth.getAccounts();
         }
         return provider;
       },
