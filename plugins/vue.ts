@@ -1,7 +1,6 @@
 // @ts-ignore
 import Vue from 'vue'; // v^2.6.11
 import Lock from '../src/lock';
-import Web3 from 'web3';
 
 const name = 'lock';
 
@@ -18,8 +17,7 @@ export const useLock = ({ ...options }) => {
         isAuthenticated: false,
         lockClient: null,
         provider: null,
-        web3: null,
-        accounts: null
+        web3: null
       };
     },
     methods: {
@@ -31,7 +29,6 @@ export const useLock = ({ ...options }) => {
           localStorage.setItem(`_${name}.connector`, connector);
           this.isAuthenticated = true;
           this.provider = provider;
-          this.accounts = await new Web3(provider).eth.getAccounts();
         }
         return provider;
       },
@@ -44,7 +41,6 @@ export const useLock = ({ ...options }) => {
           localStorage.removeItem(`_${name}.connector`);
           this.isAuthenticated = false;
           this.provider = null;
-          this.accounts = null;
         }
       },
       async getConnector() {
