@@ -33,16 +33,16 @@ export const useLock = ({ ...options }) => {
         return provider;
       },
       async logout() {
-        this.isAuthenticated = false;
         const connector = await this.getConnector();
         if (connector) {
           // @ts-ignore
           const lockConnector = this.lockClient.getConnector(connector);
           await lockConnector.logout();
           localStorage.removeItem(`_${name}.connector`);
-          // this.isAuthenticated = false;
+          this.isAuthenticated = false;
           this.provider = null;
         }
+        return 'logout'
       },
       async getConnector() {
         const connector: any = localStorage.getItem(`_${name}.connector`);
