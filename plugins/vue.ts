@@ -42,7 +42,6 @@ export const useLock = ({ ...options }) => {
           this.isAuthenticated = false;
           this.provider = null;
         }
-        return 'logout'
       },
       async getConnector() {
         const connector: any = localStorage.getItem(`_${name}.connector`);
