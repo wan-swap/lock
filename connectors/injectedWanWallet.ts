@@ -34,4 +34,7 @@ export default class Connector extends LockConnector {
     await new Promise(r => setTimeout(r, 400));
     return !!window['injectWeb3'].selectedAddress
   }
+
+  async logout() {
+  }
 }
